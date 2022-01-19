@@ -27,7 +27,7 @@ const itemRemover = (e)=>{
         <input className='element' type={"text"} placeholder='Type Here' value={task} onChange={e=>setTask(e.target.value)} onKeyPress={keyPressHandler}/>
         <ul >
           {taskList.map((e,index)=>{
-          return <li key={index.toString()} value={index} onClick={itemRemover}>{e.value}<span className="close">x</span></li>
+          return <li key={index.toString()}>{e.value}<span className="close" onClick={itemRemover}  value={index}  >x</span></li>
           })}
         </ul>
       </header>
