@@ -1,22 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
 
 function App() {
+  const [task, setTask] = useState("");
+  const [taskList, setTaskList] = useState([]);
+  const [counter, setCounter] = useState(0);
+
+const keyPressHandler = (event)=>{
+  if(event.key === 'Enter'){
+    const item = {'id':counter,'value':task}
+    setTaskList([...taskList, item]);
+    setTask("")
+    setCounter(counter+1);
+  }
+}
+
+const itemRemover = (e)=>{
+  console.log(e.target.value)
+  console.log(taskList);
+  setTaskList(taskList.filter(item=>e.target.value !== item.id))
+}
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <input className='element' type={"text"} placeholder='Type Here' value={task} onChange={e=>setTask(e.target.value)} onKeyPress={keyPressHandler}/>
+        <ul >
+          {taskList.map((e,index)=>{
+          return <li key={index.toString()} value={index} onClick={itemRemover}>{e.value}<span className="close">x</span></li>
+          })}
+        </ul>
       </header>
     </div>
   );

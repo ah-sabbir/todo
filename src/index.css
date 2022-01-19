@@ -11,3 +11,42 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.element{
+  background: transparent;
+  width:50%;
+  font-size:36px;
+  border: 2px solid white;
+  border-radius: 4px;
+}
+
+
+ul {
+  list-style: none;
+  color:black;
+  overflow:hidden; 
+  overflow-y:scroll;
+  height:70vh;
+  width:50%;
+}
+ul::-webkit-scrollbar {
+  display: none;
+}
+
+ul li {
+  padding: 1em;
+  margin: 0.25em;
+  background: #ccc;
+  display:block;
+}
+ul li.new {
+  opacity: 0;
+}
+
+.close {
+  cursor: pointer;
+  position: relative;
+  top: 50%;
+  right: 0%;
+}
